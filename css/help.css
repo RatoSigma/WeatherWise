@@ -1,0 +1,307 @@
+/* Estilos da Página de Ajuda */
+body {
+  background-color: #e6e3e3;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Tema escuro */
+body.dark-theme {
+  background-color: #1a1a1a !important;
+  color: #f0f0f0 !important;
+}
+
+/* MODO ESCURO COMPREENSIVO: Tornar TUDO escuro com texto brilhante */
+body.dark-theme,
+body.dark-theme *,
+body.dark-theme *::before,
+body.dark-theme *::after {
+  background-color: #1a1a1a !important;
+  color: #f0f0f0 !important;
+  border-color: #555 !important;
+  box-shadow: none !important;
+}
+
+/* Substituição para elementos específicos que precisam de cores diferentes */
+body.dark-theme .navbar {
+  background-color: #000f1ddc !important;
+}
+
+body.dark-theme .navbar * {
+  color: #fff !important;
+}
+
+body.dark-theme .btn {
+  background-color: #333 !important;
+  border-color: #555 !important;
+  color: #f0f0f0 !important;
+}
+
+body.dark-theme .text-muted {
+  color: #aaa !important;
+}
+
+body.dark-theme .text-muted * {
+  color: #aaa !important;
+}
+
+body.dark-theme .help-card {
+  background-color: #2d2d2d !important;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark-theme .help-section {
+  border-bottom-color: #444 !important;
+}
+
+body.dark-theme .accordion-item {
+  background-color: #333 !important;
+  border-color: #444 !important;
+}
+
+body.dark-theme .accordion-button {
+  background-color: #2d2d2d !important;
+  color: #f0f0f0 !important;
+  border-color: #555 !important;
+}
+
+body.dark-theme .accordion-button:not(.collapsed) {
+  background-color: #47b6f6 !important;
+  color: #fff !important;
+}
+
+body.dark-theme .accordion-button:hover {
+  background-color: #333 !important;
+}
+
+body.dark-theme .accordion-button:not(.collapsed):hover {
+  background-color: #3a9ad0 !important;
+}
+
+/* Tema escuro para botões da página de ajuda */
+body.dark-theme .accordion-button {
+  background-color: #2d2d2d;
+  color: #f0f0f0;
+  border-color: #555;
+}
+
+body.dark-theme .accordion-button:not(.collapsed) {
+  background-color: #47b6f6;
+  color: #fff;
+}
+
+body.dark-theme .accordion-button:hover {
+  background-color: #333;
+}
+
+body.dark-theme .accordion-button:not(.collapsed):hover {
+  background-color: #3a9ad0;
+}
+
+/* Garantir que todo o texto seja brilhante no modo escuro */
+body.dark-theme * {
+  color: #f0f0f0 !important;
+}
+
+/* Substituição para elementos específicos que precisam de cores diferentes */
+body.dark-theme .navbar * {
+  color: #fff !important;
+}
+
+body.dark-theme .btn * {
+  color: inherit !important;
+}
+
+body.dark-theme .text-muted * {
+  color: #aaa !important;
+}
+
+body.dark-theme .help-card * {
+  color: #f0f0f0 !important;
+}
+
+body.dark-theme .help-section * {
+  color: #f0f0f0 !important;
+}
+
+body.dark-theme .accordion-button:not(.collapsed) * {
+  color: #fff !important;
+}
+
+body.dark-theme .help-card {
+  background-color: #2d2d2d;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .help-section {
+  border-bottom: 1px solid #444;
+}
+
+body.dark-theme .accordion-item {
+  background-color: #333;
+  border-color: #444;
+}
+
+body.dark-theme .accordion-button {
+  background-color: #2d2d2d;
+  color: #f0f0f0;
+}
+
+body.dark-theme .accordion-button:not(.collapsed) {
+  background-color: #47b6f6;
+  color: #fff;
+}
+
+/* Estilos de navegação */
+.navbar {
+  background-color: #000f1ddc !important;
+}
+
+.navbar .nav-link {
+  color: #fff;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+.navbar .nav-link:hover, 
+.navbar .nav-link.active {
+  color: #47b6f6;
+}
+
+/* Container de ajuda */
+.help-container {
+  flex: 1;
+}
+
+.help-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-bottom: 20px;
+}
+
+.help-card h1 {
+  color: #333;
+  font-weight: 700;
+}
+
+.help-section {
+  padding: 25px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.help-section:last-child {
+  border-bottom: none;
+}
+
+.help-section h2 {
+  color: #47b6f6;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.help-section p, 
+.help-section li {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.help-image {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+.help-image img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s;
+}
+
+.help-image:hover img {
+  transform: scale(1.03);
+}
+
+/* Estilos do acordeão */
+.accordion {
+  margin-top: 20px;
+}
+
+.accordion-item {
+  border: 1px solid #eee;
+  margin-bottom: 10px;
+}
+
+.accordion-button {
+  font-weight: 600;
+  padding: 15px 20px;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #47b6f6;
+  color: white;
+}
+
+.accordion-button:focus {
+  box-shadow: 0 0 0 0.25rem rgba(71, 182, 246, 0.25);
+}
+
+.accordion-body {
+  padding: 20px;
+  line-height: 1.6;
+}
+
+/* Rodapé */
+.footer {
+  background-color: #000f1ddc;
+  color: #fff;
+  padding: 15px 0;
+  margin-top: auto;
+}
+
+.footer a {
+  text-decoration: none;
+}
+
+/* Efeito de clique */
+.energy-effect {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(189, 206, 206, 0.5);
+  animation: energyAnimation 1s forwards;
+  pointer-events: none;
+}
+
+@keyframes energyAnimation {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .help-section .row {
+    flex-direction: column-reverse;
+  }
+  
+  .help-image {
+    margin-bottom: 20px;
+  }
+  
+  .help-section h2 {
+    font-size: 1.5rem;
+  }
+}

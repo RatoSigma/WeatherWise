@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WeatherWise</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/intro.css" />
+  <link rel="icon" href="images/25x25.png" type="image/png" />
+
+  <style>
+    body {
+      background-color: #e6e3e3;
+      overflow-x: hidden;
+    }
+
+    /* Dark theme for index page */
+    body.dark-theme {
+      background-color: #1a1a1a !important;
+      color: #f0f0f0 !important;
+    }
+
+    /* COMPREHENSIVE DARK MODE: Make EVERYTHING dark with bright text */
+    body.dark-theme,
+    body.dark-theme *,
+    body.dark-theme *::before,
+    body.dark-theme *::after {
+      background-color: #1a1a1a !important;
+      color: #f0f0f0 !important;
+      border-color: #555 !important;
+      box-shadow: none !important;
+    }
+
+    /* Override for specific elements that need different colors */
+    body.dark-theme .navbar {
+      background-color: #000f1ddc !important;
+    }
+
+    body.dark-theme .navbar * {
+      color: #fff !important;
+    }
+
+    body.dark-theme .btn {
+      background-color: #333 !important;
+      border-color: #555 !important;
+      color: #f0f0f0 !important;
+    }
+
+    body.dark-theme .btn-primary {
+      background-color: #47b6f6 !important;
+      border-color: #47b6f6 !important;
+      color: #1a1a1a !important;
+    }
+
+    body.dark-theme .btn-primary:hover {
+      background-color: #3a9ad0 !important;
+      border-color: #3a9ad0 !important;
+    }
+
+    body.dark-theme .btn-outline-primary {
+      background-color: transparent !important;
+      border-color: #47b6f6 !important;
+      color: #47b6f6 !important;
+    }
+
+    body.dark-theme .btn-outline-primary:hover {
+      background-color: #47b6f6 !important;
+      border-color: #47b6f6 !important;
+      color: #1a1a1a !important;
+    }
+
+    body.dark-theme .btn-outline-secondary {
+      background-color: transparent !important;
+      border-color: #aaa !important;
+      color: #aaa !important;
+    }
+
+    body.dark-theme .btn-outline-secondary:hover {
+      background-color: #aaa !important;
+      border-color: #aaa !important;
+      color: #1a1a1a !important;
+    }
+
+    body.dark-theme .info-button {
+      background-color: #47b6f6 !important;
+      border-color: #47b6f6 !important;
+      color: #fff !important;
+    }
+
+    body.dark-theme .info-button:hover {
+      background-color: #3a9ad0 !important;
+      border-color: #3a9ad0 !important;
+    }
+
+    body.dark-theme .text-muted {
+      color: #aaa !important;
+    }
+
+    body.dark-theme .text-muted * {
+      color: #aaa !important;
+    }
+
+    body.dark-theme .div_legal {
+      background-color: #2d2d2d !important;
+      color: #f0f0f0 !important;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    body.dark-theme .bg-white {
+      background-color: #2d2d2d !important;
+    }
+
+    body.dark-theme .text-center {
+      color: #f0f0f0 !important;
+    }
+
+    body.dark-theme .btn-info {
+      background-color: #47b6f6 !important;
+      border-color: #47b6f6 !important;
+      color: #1a1a1a !important;
+    }
+
+    body.dark-theme .btn-info:hover {
+      background-color: #3a9ad0 !important;
+      border-color: #3a9ad0 !important;
+    }
+
+    body.dark-theme .confetti {
+      background-color: #47b6f6 !important;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+    }
+    
+    /* Navigation styles */
+    .navbar {
+      background-color: #000f1ddc !important;
+      position: relative;
+      z-index: 100;
+    }
+
+    .navbar .nav-link {
+      color: #fff;
+      margin: 0 10px;
+      transition: color 0.3s;
+    }
+
+    .navbar .nav-link:hover, 
+    .navbar .nav-link.active {
+      color: #47b6f6;
+    }
+
+    .half-screen {
+      height: 90vh;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .div_legal {
+      height: auto;
+      size: auto;
+      background-color: #ffffff;
+      padding: 15px;
+      border-radius: 25px;
+    }
+
+    /* Slideshow bg slides */
+    #backgroundSlideshow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    #backgroundSlideshow .bg-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      transition: opacity 1.5s ease;
+      opacity: 0;
+      z-index: 0;
+    }
+
+    #backgroundSlideshow .bg-slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    /* Estilo do confete */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      top: -40px;
+      z-index: 9999;
+      opacity: 0.8;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotateZ(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <!-- Barra de Navegação -->
+  <nav class="navbar navbar-expand-lg" style="background-color: #000f1ddc; padding: 10px 0; margin: 0;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/Logo_WeatherWise.png" alt="WeatherWise Logo" style="height: 60px;" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard.html">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="settings.html">Settings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="help.html">Help</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+    <div class="container-fluid">
+      <div class="row half-screen">
+        <!-- Metade esquerda - imagem -->
+        <div class="col-md-6 d-flex justify-content-center align-items-center image-container"
+          style="transition: transform 0.3s ease; background-color: #e6e3e3;">
+          <img src="images/logo_quevoaB.png" id="imgcentro" alt="WeatherWise Logo" />
+        </div>
+
+        <!-- Metade direita com slideshow -->
+        <div class="col-md-6 d-flex flex-column justify-content-center align-items-center bg-white text-center p-5 position-relative"
+          style="overflow: hidden;">
+          <!-- Slideshow de fundo -->
+          <div id="backgroundSlideshow">
+            <div class="bg-slide active"></div>
+            <div class="bg-slide"></div>
+          </div>
+
+          <!-- Conteúdo da div (sobre o slideshow) -->
+          <div style="position: relative; z-index: 2;">
+            <div class="div_legal">
+              <h1 class="mb-4" id="mouseanimacao" style="transition: transform 0.3s ease;">
+                Welcome to <span style="color: gray;">Weather</span><span style="color: #47b6f6;">Wise!</span>
+              </h1>
+              <p class="mb-4" id="mouseanimaco" style="transition: transform 0.3s ease;">
+                <strong>WeatherWise</strong> is your intelligent weather companion that provides <strong>comprehensive weather analysis</strong> 
+                for any location worldwide. Simply select a place on the interactive map, choose your preferred date, 
+                and get detailed <strong>probability-based weather forecasts</strong>.
+                <br><br>
+                Our advanced analytics engine processes historical weather data to give you insights about 
+                <strong>temperature ranges</strong>, <strong>precipitation likelihood</strong>, <strong>wind conditions</strong>, and 
+                <strong>humidity levels</strong>. Whether you're planning outdoor activities, business trips, or just curious 
+                about weather patterns, WeatherWise helps you make informed decisions with confidence.
+                <br><br>
+                <em>Perfect for travelers, outdoor enthusiasts, event planners, and anyone who wants to stay ahead of the weather.</em>
+              </p>
+              <a href="dashboard.html" class="btn btn-info" id="mouseanim" style="transition: transform 0.3s ease;">Get Started</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Animação de clique
+    document.addEventListener("click", function (e) {
+      const effect = document.createElement("div");
+      effect.classList.add("energy-effect");
+      effect.style.position = "fixed";
+      effect.style.left = `${e.clientX - 25}px`;
+      effect.style.top = `${e.clientY - 25}px`;
+      document.body.appendChild(effect);
+      setTimeout(() => {
+        effect.remove();
+      }, 1000);
+    });
+  </script>
+
+  <script>
+    // Bloqueia menu de contexto e drag nas imagens e define alt padrão
+    document.addEventListener("DOMContentLoaded", function () {
+      const images = document.querySelectorAll("img");
+      images.forEach((img) => {
+        img.alt = "essa imagem não pode ser exibida";
+        img.addEventListener("contextmenu", (e) => e.preventDefault());
+        img.addEventListener("dragstart", (e) => e.preventDefault());
+        img.onerror = function () {
+          this.onerror = null;
+          this.src =
+            "https://cdn.icon-icons.com/icons2/3871/PNG/512/gallery_slash_icon_244286.png";
+        };
+      });
+    });
+  </script>
+
+  <script>
+    // Slideshow suave com crossfade para o fundo da div direita
+    const slideshow = document.getElementById("backgroundSlideshow");
+    const slides = slideshow.querySelectorAll(".bg-slide");
+
+    const images = [
+      "images/fundo_natureza.png",
+      "images/fundo_natureza2.png",
+      "images/fundo_natureza3.png",
+      "images/fundo_natureza4.png",
+    ];
+
+    let currentIndex = 0;
+    let activeSlide = 0;
+
+    // Inicializa as imagens
+    slides[0].style.backgroundImage = `url('${images[0]}')`;
+    slides[0].classList.add("active");
+    slides[1].style.backgroundImage = `url('${images[1]}')`;
+
+    function changeBackground() {
+      const nextIndex = (currentIndex + 1) % images.length;
+      const nextSlide = (activeSlide + 1) % 2;
+
+      // Define próxima imagem no slide inativo
+      slides[nextSlide].style.backgroundImage = `url('${images[nextIndex]}')`;
+
+      // Crossfade
+      slides[activeSlide].classList.remove("active");
+      slides[nextSlide].classList.add("active");
+
+      currentIndex = nextIndex;
+      activeSlide = nextSlide;
+    }
+
+    setInterval(changeBackground, 5000);
+  </script>
+  
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6 text-end">
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Correção de Modo Escuro -->
+  <script src="js/dark-mode-fix.js"></script>
+  
+  <!-- Gestor de Configurações -->
+  <script src="js/settings.js"></script>
+</body>
+
+</html>

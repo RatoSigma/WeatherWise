@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WeatherWise - Help</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/help.css">
+</head>
+<body>
+  <!-- Barra de Navegação -->
+  <nav class="navbar navbar-expand-lg" style="background-color: #000f1ddc; padding: 10px 0; margin: 0;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/Logo_WeatherWise.png" alt="WeatherWise Logo" style="height: 60px;" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard.html">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="settings.html">Settings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="help.html">Help</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Conteúdo de Ajuda -->
+  <div class="help-container container my-5">
+    <div class="help-card">
+      <h1 class="text-center mb-5">How to Use WeatherWise</h1>
+      
+      <div class="help-section">
+        <h2><i class="fas fa-map-marked-alt me-2"></i>Finding Your Location</h2>
+        <div class="row">
+          <div class="col-md-8">
+            <p>There are three ways to select a location on WeatherWise:</p>
+            <ol>
+              <li><strong>Search by name:</strong> Type a city or location name in the search box and press Enter.</li>
+              <li><strong>Click on the map:</strong> Simply click anywhere on the map to select that location.</li>
+              <li><strong>Drop a pin:</strong> Use the pin tool to precisely mark a location of interest.</li>
+            </ol>
+            <p>Once selected, the latitude and longitude coordinates will be displayed, and you can proceed with your weather analysis.</p>
+          </div>
+          <div class="col-md-4">
+            <div class="help-image">
+              <img src="images/mapa_exemplo.png" alt="Map selection example" class="img-fluid rounded">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="help-section">
+        <h2><i class="fas fa-calendar-alt me-2"></i>Selecting Time Period</h2>
+        <div class="row">
+          <div class="col-md-8">
+            <p>WeatherWise uses historical NASA data to predict weather conditions:</p>
+            <ul>
+              <li>Use the month selector to choose which time of year you're interested in.</li>
+              <li>The analysis will be based on historical data for that month across multiple years.</li>
+              <li>This gives you a statistical likelihood of weather conditions, not a forecast.</li>
+            </ul>
+            <p><strong>Note:</strong> WeatherWise is designed for planning purposes, not for current weather forecasts.</p>
+          </div>
+          <div class="col-md-4">  
+            <div class="help-image">
+              <img src="images/data_exemplo.png" alt="Date selection example" class="img-fluid rounded">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="help-section">
+        <h2><i class="fas fa-sliders-h me-2"></i>Choosing Weather Variables</h2>
+        <p>Select which weather conditions you want to analyze:</p>
+        <div class="row">
+          <div class="col-md-6">
+            <ul>
+              <li><strong>Temperature:</strong> How hot or cold it's likely to be</li>
+              <li><strong>Precipitation:</strong> Likelihood of rain or snow</li>
+              <li><strong>Wind Speed:</strong> How windy conditions might be</li>
+              <li><strong>Humidity:</strong> Expected moisture levels in the air</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <p>For each variable, WeatherWise will calculate the probability of "extreme" or "uncomfortable" conditions based on historical data.</p>
+            <p>You can adjust what counts as "extreme" in the Settings page.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="help-section">
+        <h2><i class="fas fa-chart-line me-2"></i>Understanding Results</h2>
+        <div class="row">
+          <div class="col-md-8">
+            <p>After analysis, WeatherWise displays results in several formats:</p>
+            <ul>
+              <li><strong>Text Summary:</strong> A plain-language description of likely conditions</li>
+              <li><strong>Probability Charts:</strong> Visual representation of how likely different conditions are</li>
+              <li><strong>Map Overlays:</strong> Color-coded visualization of conditions in the selected area</li>
+            </ul>
+            <p>The results show statistical probabilities based on historical data, not predictions of actual future weather.</p>
+          </div>
+          <div class="col-md-4">
+            <div class="help-image">
+              <img src="images/resultado_exemplo.png" alt="Results example" class="img-fluid rounded">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="help-section">
+        <h2><i class="fas fa-download me-2"></i>Exporting Data</h2>
+        <p>You can download the analysis results for your records or further analysis:</p>
+        <ol>
+          <li>Click the "Download Data" button in the results section</li>
+          <li>Choose CSV or JSON format</li>
+          <li>The downloaded file will include all analyzed data, metadata, and source information</li>
+        </ol>
+        <p>This feature is useful for researchers, travelers planning trips, or anyone who needs offline access to the analysis.</p>
+      </div>
+      
+      <div class="help-section">
+        <h2><i class="fas fa-question-circle me-2"></i>Frequently Asked Questions</h2>
+        <div class="accordion" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                Is WeatherWise a weather forecast service?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                No, WeatherWise is not a forecast service. Instead of predicting future weather, it analyzes historical NASA data to show you the statistical likelihood of certain weather conditions for a specific location and time of year. This is useful for planning purposes when you want to know what weather conditions are typically like.
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                How accurate is the data?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                WeatherWise uses historical data from NASA's reliable sources like the POWER API and MERRA-2. The analysis shows statistical probabilities based on past weather patterns. While this provides a good indication of typical conditions, climate change and unusual weather patterns can affect actual conditions. The data is most reliable for general planning rather than specific day predictions.
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                Can I use WeatherWise offline?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                WeatherWise requires an internet connection to fetch data from NASA APIs. However, once you've performed an analysis, you can download the results as CSV or JSON files for offline reference. The website itself cannot function without an internet connection for the initial data retrieval.
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                How do I change units (Celsius/Fahrenheit, etc.)?
+              </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                You can change measurement units in the Settings page. WeatherWise allows you to switch between Celsius and Fahrenheit for temperature, km/h and mph for wind speed, and mm and inches for precipitation. Your preferences will be saved for future sessions.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="help-section">
+        <h2><i class="fas fa-info-circle me-2"></i>About the Data</h2>
+        <p>WeatherWise uses data from the following NASA sources:</p>
+        <ul>
+          <li><strong>NASA POWER API:</strong> Provides surface meteorology and solar energy data</li>
+          <li><strong>MERRA-2:</strong> Modern-Era Retrospective analysis for Research and Applications, Version 2</li>
+          <li><strong>GPM:</strong> Global Precipitation Measurement mission data</li>
+        </ul>
+        <p>The data is processed client-side to calculate probabilities and generate visualizations. No user data is stored on servers.</p>
+        <p>For more information about NASA's data sources, visit <a href="https://power.larc.nasa.gov/" target="_blank">NASA POWER</a>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer text-center">
+    <div class="container">
+      <p class="mb-0">
+        WeatherWise uses data from <a href="https://power.larc.nasa.gov/" target="_blank" class="text-light">NASA POWER</a> and other NASA sources. 
+        Created for educational purposes.
+      </p>
+    </div>
+    </div>
+  </footer>
+  
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6 text-end">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/dark-mode-fix.js"></script>
+  <script src="js/settings.js"></script>
+  
+  <!-- Click Animation Script -->
+  <script>
+    document.addEventListener('click', function(e) {
+      // Cria o elemento de efeito
+      const effect = document.createElement('div');
+      effect.className = 'energy-effect';
+      
+      // Posiciona o efeito no local do clique
+      effect.style.left = (e.pageX - 25) + 'px';
+      effect.style.top = (e.pageY - 25) + 'px';
+      
+      // Adiciona o efeito ao corpo do documento
+      document.body.appendChild(effect);
+      
+      // Remove o efeito após a animação
+      setTimeout(function() {
+        effect.remove();
+      }, 1000);
+    });
+  </script>
+</body>
+</html>

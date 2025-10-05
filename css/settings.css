@@ -1,0 +1,399 @@
+/* Estilos de Configurações */
+body {
+  background-color: #e6e3e3;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Tema escuro */
+body.dark-theme {
+    background-color: #1a1a1a !important;
+    color: #f0f0f0 !important;
+}
+
+/* MODO ESCURO COMPREENSIVO: Tornar TUDO escuro com texto brilhante */
+body.dark-theme,
+body.dark-theme *,
+body.dark-theme *::before,
+body.dark-theme *::after {
+    background-color: #1a1a1a !important;
+    color: #f0f0f0 !important;
+    border-color: #555 !important;
+    box-shadow: none !important;
+}
+
+/* Substituição para elementos específicos que precisam de cores diferentes */
+body.dark-theme .navbar {
+    background-color: #000f1ddc !important;
+}
+
+body.dark-theme .navbar * {
+    color: #fff !important;
+}
+
+body.dark-theme .btn {
+    background-color: #333 !important;
+    border-color: #555 !important;
+    color: #f0f0f0 !important;
+}
+
+body.dark-theme .btn-primary {
+    background-color: #47b6f6 !important;
+    border-color: #47b6f6 !important;
+    color: #1a1a1a !important;
+}
+
+body.dark-theme .btn-primary:hover {
+    background-color: #3a9ad0 !important;
+    border-color: #3a9ad0 !important;
+}
+
+body.dark-theme .btn-outline-primary {
+    background-color: transparent !important;
+    border-color: #47b6f6 !important;
+    color: #47b6f6 !important;
+}
+
+body.dark-theme .btn-outline-primary:hover {
+    background-color: #47b6f6 !important;
+    border-color: #47b6f6 !important;
+    color: #1a1a1a !important;
+}
+
+body.dark-theme .btn-outline-secondary {
+    background-color: transparent !important;
+    border-color: #aaa !important;
+    color: #aaa !important;
+}
+
+body.dark-theme .btn-outline-secondary:hover {
+    background-color: #aaa !important;
+    border-color: #aaa !important;
+    color: #1a1a1a !important;
+}
+
+body.dark-theme .text-muted {
+    color: #aaa !important;
+}
+
+body.dark-theme .text-muted * {
+    color: #aaa !important;
+}
+
+body.dark-theme .settings-card {
+    background-color: #2d2d2d !important;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark-theme .setting-item {
+    border-bottom-color: #444 !important;
+}
+
+body.dark-theme .form-control,
+body.dark-theme .form-select {
+    background-color: #333 !important;
+    border-color: #555 !important;
+    color: #f0f0f0 !important;
+}
+
+body.dark-theme .form-control:focus,
+body.dark-theme .form-select:focus {
+    background-color: #333 !important;
+    border-color: #47b6f6 !important;
+    color: #f0f0f0 !important;
+    box-shadow: 0 0 0 0.2rem rgba(71, 182, 246, 0.25) !important;
+}
+
+body.dark-theme .form-check-input {
+    background-color: #333 !important;
+    border-color: #555 !important;
+}
+
+body.dark-theme .form-check-input:checked {
+    background-color: #47b6f6 !important;
+    border-color: #47b6f6 !important;
+}
+
+body.dark-theme .form-check-label {
+    color: #f0f0f0 !important;
+}
+
+body.dark-theme .setting-label h4 {
+    color: #f0f0f0 !important;
+}
+
+body.dark-theme .setting-label p {
+    color: #aaa !important;
+}
+
+/* Tema escuro para botões da página de configurações */
+body.dark-theme .btn-primary {
+    background-color: #47b6f6;
+    border-color: #47b6f6;
+    color: #1a1a1a;
+}
+
+body.dark-theme .btn-primary:hover {
+    background-color: #3a9ad0;
+    border-color: #3a9ad0;
+}
+
+body.dark-theme .btn-outline-primary {
+    color: #47b6f6;
+    border-color: #47b6f6;
+    background-color: transparent;
+}
+
+body.dark-theme .btn-outline-primary:hover {
+    background-color: #47b6f6;
+    color: #1a1a1a;
+}
+
+body.dark-theme .btn-outline-secondary {
+    color: #aaa;
+    border-color: #aaa;
+    background-color: transparent;
+}
+
+body.dark-theme .btn-outline-secondary:hover {
+    background-color: #aaa;
+    color: #1a1a1a;
+}
+
+/* Tema escuro para botões de rádio */
+body.dark-theme .btn-check:checked + .btn-outline-primary {
+    background-color: #47b6f6;
+    border-color: #47b6f6;
+    color: #1a1a1a;
+}
+
+body.dark-theme .btn-outline-primary:not(:checked) {
+    color: #47b6f6;
+    border-color: #47b6f6;
+    background-color: transparent;
+}
+
+/* Garantir que todo o texto seja brilhante no modo escuro */
+body.dark-theme * {
+  color: #f0f0f0 !important;
+}
+
+/* Override for specific elements that need different colors */
+body.dark-theme .navbar * {
+  color: #fff !important;
+}
+
+body.dark-theme .btn * {
+  color: inherit !important;
+}
+
+body.dark-theme .text-muted * {
+  color: #aaa !important;
+}
+
+body.dark-theme .btn-outline-primary * {
+  color: #47b6f6 !important;
+}
+
+body.dark-theme .btn-outline-primary:hover * {
+  color: #fff !important;
+}
+
+body.dark-theme .btn-outline-secondary * {
+  color: #aaa !important;
+}
+
+body.dark-theme .btn-outline-secondary:hover * {
+  color: #1a1a1a !important;
+}
+
+body.dark-theme .settings-card {
+  background-color: #2d2d2d;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .setting-item {
+  border-bottom: 1px solid #444;
+}
+
+body.dark-theme .text-muted {
+  color: #aaa !important;
+}
+
+body.dark-theme .btn-outline-primary {
+  color: #47b6f6;
+  border-color: #47b6f6;
+}
+
+body.dark-theme .btn-outline-primary:hover {
+  background-color: #47b6f6;
+  color: #1a1a1a;
+}
+
+body.dark-theme .btn-outline-secondary {
+  color: #aaa;
+  border-color: #aaa;
+}
+
+body.dark-theme .form-control,
+body.dark-theme .form-select {
+  background-color: #333;
+  border-color: #555;
+  color: #f0f0f0;
+}
+
+/* Estilos de Navegação */
+.navbar {
+  background-color: #000f1ddc !important;
+}
+
+.navbar .nav-link {
+  color: #fff;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+.navbar .nav-link:hover, 
+.navbar .nav-link.active {
+  color: #47b6f6;
+}
+
+/* Container de configurações */
+.settings-container {
+  flex: 1;
+  padding: 40px 20px;
+}
+
+.settings-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-bottom: 20px;
+}
+
+.settings-card h2 {
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.setting-item:last-child {
+  border-bottom: none;
+}
+
+.setting-label {
+  flex: 1;
+}
+
+.setting-label h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.setting-label p {
+  margin: 5px 0 0;
+  font-size: 0.9rem;
+}
+
+.setting-control {
+  flex: 1;
+  text-align: right;
+}
+
+/* Controles de formulário */
+.form-check-input:checked {
+  background-color: #47b6f6;
+  border-color: #47b6f6;
+}
+
+.btn-outline-primary {
+  color: #47b6f6;
+  border-color: #47b6f6;
+}
+
+.btn-outline-primary:hover,
+.btn-check:checked + .btn-outline-primary {
+  background-color: #47b6f6;
+  border-color: #47b6f6;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #47b6f6;
+  border: none;
+  padding: 10px 20px;
+  transition: all 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #3a9ad0;
+  transform: scale(1.02);
+}
+
+/* Interruptor de formulário */
+.form-switch .form-check-input {
+  width: 3em;
+  height: 1.5em;
+}
+
+.form-switch .form-check-input:focus {
+  border-color: rgba(71, 182, 246, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(71, 182, 246, 0.25);
+}
+
+/* Rodapé */
+.footer {
+  background-color: #000f1ddc;
+  color: #fff;
+  padding: 15px 0;
+  margin-top: auto;
+}
+
+/* Efeito de clique */
+.energy-effect {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(189, 206, 206, 0.5);
+  animation: energyAnimation 1s forwards;
+  pointer-events: none;
+}
+
+@keyframes energyAnimation {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .setting-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .setting-control {
+    text-align: left;
+    margin-top: 10px;
+    width: 100%;
+  }
+}

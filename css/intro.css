@@ -1,0 +1,230 @@
+
+/* Efeito de clique */
+.energy-effect {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(189, 206, 206, 0.5);
+    animation: energyAnimation 1s forwards;
+    pointer-events: none;
+}
+
+@keyframes energyAnimation {
+    0% {
+    transform: scale(0.5);
+    opacity: 1; 
+    }
+
+    100% {
+    transform: scale(3);
+    opacity: 0;
+    }
+}
+
+/* Tema escuro para página de introdução */
+body.dark-theme {
+  background-color: #1a1a1a !important;
+  color: #f0f0f0 !important;
+}
+
+/* MODO ESCURO COMPREENSIVO: Tornar TUDO escuro com texto brilhante */
+body.dark-theme,
+body.dark-theme *,
+body.dark-theme *::before,
+body.dark-theme *::after {
+  background-color: #1a1a1a !important;
+  color: #f0f0f0 !important;
+  border-color: #555 !important;
+  box-shadow: none !important;
+}
+
+/* Substituição para elementos específicos que precisam de cores diferentes */
+body.dark-theme .navbar {
+  background-color: #000f1ddc !important;
+}
+
+body.dark-theme .navbar * {
+  color: #fff !important;
+}
+
+body.dark-theme .btn {
+  background-color: #333 !important;
+  border-color: #555 !important;
+  color: #f0f0f0 !important;
+}
+
+body.dark-theme .btn-primary {
+  background-color: #47b6f6 !important;
+  border-color: #47b6f6 !important;
+  color: #1a1a1a !important;
+}
+
+body.dark-theme .btn-primary:hover {
+  background-color: #3a9ad0 !important;
+  border-color: #3a9ad0 !important;
+}
+
+body.dark-theme .btn-outline-primary {
+  background-color: transparent !important;
+  border-color: #47b6f6 !important;
+  color: #47b6f6 !important;
+}
+
+body.dark-theme .btn-outline-primary:hover {
+  background-color: #47b6f6 !important;
+  border-color: #47b6f6 !important;
+  color: #1a1a1a !important;
+}
+
+body.dark-theme .btn-outline-secondary {
+  background-color: transparent !important;
+  border-color: #aaa !important;
+  color: #aaa !important;
+}
+
+body.dark-theme .btn-outline-secondary:hover {
+  background-color: #aaa !important;
+  border-color: #aaa !important;
+  color: #1a1a1a !important;
+}
+
+body.dark-theme .text-muted {
+  color: #aaa !important;
+}
+
+body.dark-theme .text-muted * {
+  color: #aaa !important;
+}
+
+body.dark-theme .form-control {
+  background-color: #333 !important;
+  border-color: #555 !important;
+  color: #f0f0f0 !important;
+}
+
+body.dark-theme .form-control:focus {
+  background-color: #333 !important;
+  border-color: #47b6f6 !important;
+  color: #f0f0f0 !important;
+  box-shadow: 0 0 0 0.2rem rgba(71, 182, 246, 0.25) !important;
+}
+
+body.dark-theme .div_legal {
+  background-color: #2d2d2d !important;
+  color: #f0f0f0 !important;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark-theme .energy-effect {
+  background-color: rgba(71, 182, 246, 0.3) !important;
+}
+
+@keyframes energyAnimation {
+    0% {
+    transform: scale(0.5);
+    opacity: 1;
+    }
+
+    100% {
+    transform: scale(3);
+    opacity: 0;
+    }
+}
+
+/* Tema escuro para página de introdução */
+body.dark-theme {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}
+
+body.dark-theme .navbar {
+  background-color: #000f1ddc !important;
+}
+
+body.dark-theme .navbar .nav-link {
+  color: #f0f0f0;
+}
+
+body.dark-theme .navbar .nav-link:hover,
+body.dark-theme .navbar .nav-link.active {
+  color: #47b6f6;
+}
+
+body.dark-theme .text-muted {
+  color: #aaa !important;
+}
+
+body.dark-theme .btn-outline-primary {
+  color: #47b6f6;
+  border-color: #47b6f6;
+}
+
+body.dark-theme .btn-outline-primary:hover {
+  background-color: #47b6f6;
+  color: #1a1a1a;
+}
+
+body.dark-theme .btn-outline-secondary {
+  color: #aaa;
+  border-color: #aaa;
+}
+
+body.dark-theme .btn-outline-secondary:hover {
+  background-color: #aaa;
+  color: #1a1a1a;
+}
+
+body.dark-theme .form-control {
+  background-color: #333;
+  border-color: #555;
+  color: #f0f0f0;
+}
+
+@keyframes energyAnimation {
+    0% {
+    transform: scale(0.5);
+    opacity: 1;
+    }
+
+    100% {
+    transform: scale(3);
+    opacity: 0;
+    }
+}
+
+/* tags */
+
+#imgcentro {
+    animation: flutuar 5s ease-in-out infinite;
+    transition: width 0.3s ease;
+}
+
+#zoom {
+  animation: scaleUpDown 2s ease-in-out infinite;
+}
+
+#mouseanim:hover {
+  transform: scale(1.05);
+}
+
+@keyframes flutuar {
+    0%,
+    100% {
+    transform: translateY(0);
+    }
+
+    50% {
+    transform: translateY(-30px);
+    }
+}
+
+@keyframes scaleUpDown {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+

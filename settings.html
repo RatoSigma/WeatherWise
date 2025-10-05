@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WeatherWise - Settings</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/settings.css" />
+  <link rel="icon" href="images/25x25.png" type="image/png" />
+</head>
+
+<body>
+  <!-- Barra de Navegação -->
+  <nav class="navbar navbar-expand-lg" style="background-color: #000f1ddc; padding: 10px 0; margin: 0;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/Logo_WeatherWise.png" alt="WeatherWise Logo" style="height: 60px;" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard.html">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="settings.html">Settings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="help.html">Help</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container settings-container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="settings-card">
+          <h2 class="text-center mb-4">Settings</h2>
+          
+          <div class="setting-item">
+            <div class="setting-label">
+              <h4>Theme</h4>
+              <p class="text-muted">Choose between light and dark mode</p>
+            </div>
+            <div class="setting-control">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="themeToggle">
+                <label class="form-check-label" for="themeToggle">
+                  <span id="themeLabel">Light Mode</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          
+          <div class="setting-item">
+            <div class="setting-label">
+              <h4>Temperature Unit</h4>
+              <p class="text-muted">Choose your preferred temperature unit</p>
+            </div>
+            <div class="setting-control">
+              <div class="btn-group" role="group">
+                <input type="radio" class="btn-check" name="tempUnit" id="celsius" autocomplete="off" checked>
+                <label class="btn btn-outline-primary" for="celsius">Celsius (°C)</label>
+                
+                <input type="radio" class="btn-check" name="tempUnit" id="fahrenheit" autocomplete="off">
+                <label class="btn btn-outline-primary" for="fahrenheit">Fahrenheit (°F)</label>
+              </div>
+            </div>
+          </div>
+          
+          <div class="setting-item">
+            <div class="setting-label">
+              <h4>Wind Speed Unit</h4>
+              <p class="text-muted">Choose your preferred wind speed unit</p>
+            </div>
+            <div class="setting-control">
+              <select class="form-select" id="windUnit">
+                <option value="kph">Kilometers per hour (km/h)</option>
+                <option value="mph">Miles per hour (mph)</option>
+                <option value="ms">Meters per second (m/s)</option>
+                <option value="knots">Knots (kn)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="setting-item">
+            <div class="setting-label">
+              <h4>Precipitation Unit</h4>
+              <p class="text-muted">Choose your preferred precipitation unit</p>
+            </div>
+            <div class="setting-control">
+              <div class="btn-group" role="group">
+                <input type="radio" class="btn-check" name="precipUnit" id="mm" autocomplete="off" checked>
+                <label class="btn btn-outline-primary" for="mm">Millimeters (mm)</label>
+                
+                <input type="radio" class="btn-check" name="precipUnit" id="inches" autocomplete="off">
+                <label class="btn btn-outline-primary" for="inches">Inches (in)</label>
+              </div>
+            </div>
+          </div>
+          
+          <div class="setting-item">
+            <div class="setting-label">
+              <h4>Data Refresh Rate</h4>
+              <p class="text-muted">How often to refresh data automatically</p>
+            </div>
+            <div class="setting-control">
+              <select class="form-select" id="refreshRate">
+                <option value="0">Manual only</option>
+                <option value="60">Every minute</option>
+                <option value="300">Every 5 minutes</option>
+                <option value="600">Every 10 minutes</option>
+                <option value="1800">Every 30 minutes</option>
+                <option value="3600">Every hour</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="setting-item">
+            <div class="setting-label">
+              <h4>Default Location</h4>
+              <p class="text-muted">Set your default location for weather analysis</p>
+            </div>
+            <div class="setting-control">
+              <input type="text" class="form-control" id="defaultLocation" placeholder="Enter location name">
+              <button class="btn btn-outline-secondary mt-2" id="useCurrentLocation">
+                <i class="bi bi-geo-alt"></i> Use Current Location
+              </button>
+            </div>
+          </div>
+          
+          <!-- Limiares de Análise de Clima -->
+          <div class="setting-item">
+            <div class="setting-label">
+              <h4><i class="fas fa-chart-bar me-2"></i>Weather Analysis Thresholds</h4>
+              <p class="text-muted">Customize the values that define weather conditions in your analysis</p>
+            </div>
+          </div>
+          
+          <!-- Limiares de Temperatura -->
+          <div class="setting-item">
+            <div class="setting-label">
+              <h5 class="text-primary">Temperature Thresholds</h5>
+              <p class="text-muted">Set temperature ranges for analysis (auto-adjusts based on °C/°F setting)</p>
+            </div>
+            <div class="setting-control">
+              <div class="row g-2">
+                <div class="col-6">
+                  <label class="form-label">Very Cold Threshold</label>
+                  <input type="number" class="form-control form-control-sm" id="tempVeryCold" step="0.1">
+                </div>
+                <div class="col-6">
+                  <label class="form-label">Cold Threshold</label>
+                  <input type="number" class="form-control form-control-sm" id="tempCold" step="0.1">
+                </div>
+                <div class="col-6">
+                  <label class="form-label">Mild Threshold</label>
+                  <input type="number" class="form-control form-control-sm" id="tempMild" step="0.1">
+                </div>
+                <div class="col-6">
+                  <label class="form-label">Warm Threshold</label>
+                  <input type="number" class="form-control form-control-sm" id="tempWarm" step="0.1">
+                </div>
+                <div class="col-6">
+                  <label class="form-label">Hot Threshold</label>
+                  <input type="number" class="form-control form-control-sm" id="tempHot" step="0.1">
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Limiares de Precipitação -->
+          <div class="setting-item">
+            <div class="setting-label">
+              <h5 class="text-success">Precipitation Thresholds</h5>
+              <p class="text-muted">Set precipitation ranges (auto-adjusts based on mm/inches setting)</p>
+            </div>
+            <div class="setting-control">
+              <div class="row g-2">
+                <div class="col-6">
+                  <label class="form-label">Light Threshold</label>
+                  <input type="number" class="form-control form-control-sm" id="precipLight" step="0.1">
+                </div>
+                <div class="col-6">
+                  <label class="form-label">Moderate Threshold</label>
+                  <input type="number" class="form-control form-control-sm" id="precipModerate" step="0.1">
+                </div>
+                <div class="col-6">
+                  <label class="form-label">Heavy Threshold</label>
+                  <input type="number" class="form-control form-control-sm" id="precipHeavy" step="0.1">
+                </div>
+                <div class="col-6">
+                  <label class="form-label">Very Heavy Threshold</label>
+                  <input type="number" class="form-control form-control-sm" id="precipVeryHeavy" step="0.1">
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Limiares de Velocidade do Vento -->
+          <div class="setting-item">
+            <div class="setting-label">
+              <h5 class="text-info">Wind Speed Thresholds</h5>
+              <p class="text-muted">Set wind speed ranges (auto-adjusts based on km/h/mph/m/s/knots setting)</p>
+            </div>
+            <div class="setting-control">
+              <div class="row g-2">
+                <div class="col-6">
+                  <label class="form-label">Light Threshold</label>
+                  <input type="number" class="form-control form-control-sm" id="windLight" step="0.1">
+                </div>
+                <div class="col-6">
+                  <label class="form-label">Moderate Threshold</label>
+                  <input type="number" class="form-control form-control-sm" id="windModerate" step="0.1">
+                </div>
+                <div class="col-6">
+                  <label class="form-label">Strong Threshold</label>
+                  <input type="number" class="form-control form-control-sm" id="windStrong" step="0.1">
+                </div>
+                <div class="col-6">
+                  <label class="form-label">Very Strong Threshold</label>
+                  <input type="number" class="form-control form-control-sm" id="windVeryStrong" step="0.1">
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Limiares de Humidade -->
+          <div class="setting-item">
+            <div class="setting-label">
+              <h5 class="text-warning">Humidity Thresholds</h5>
+              <p class="text-muted">Set humidity percentage ranges</p>
+            </div>
+            <div class="setting-control">
+              <div class="row g-2">
+                <div class="col-6">
+                  <label class="form-label">Dry Threshold</label>
+                  <input type="number" class="form-control form-control-sm" id="humidityDry" step="1" min="0" max="100">
+                </div>
+                <div class="col-6">
+                  <label class="form-label">Comfortable Threshold</label>
+                  <input type="number" class="form-control form-control-sm" id="humidityComfortable" step="1" min="0" max="100">
+                </div>
+                <div class="col-6">
+                  <label class="form-label">Humid Threshold</label>
+                  <input type="number" class="form-control form-control-sm" id="humidityHumid" step="1" min="0" max="100">
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="text-center mt-2">
+            <button id="resetThresholds" class="btn btn-outline-warning btn-sm">Reset Thresholds to Default</button>
+          </div>
+          
+          <div class="text-center mt-4">
+            <button id="saveSettings" class="btn btn-primary">Save Settings</button>
+            <button id="resetSettings" class="btn btn-outline-secondary ms-2">Reset to Default</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p>Data provided by NASA APIs</p>
+        </div>
+        <div class="col-md-6 text-end">
+          <p>&copy; 2023 WeatherWise. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/dark-mode-fix.js"></script>
+  <script src="js/settings.js"></script>
+</body>
+
+</html>

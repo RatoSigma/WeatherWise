@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WeatherWise - Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Bootstrap Calendar CSS -->
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+  <!-- Leaflet CSS for maps -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <!-- Leaflet Geocoder for autocomplete -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+  <!-- Chart.js for data visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="icon" href="images/25x25.png" type="image/png" />
+</head>
+
+<body>
+  <!-- Barra de Navegação -->
+  <nav class="navbar navbar-expand-lg" style="background-color: #000f1ddc; padding: 10px 0; margin: 0;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/Logo_WeatherWise.png" alt="WeatherWise Logo" style="height: 60px;" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="dashboard.html">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="settings.html">Settings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="help.html">Help</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid dashboard-container">
+    <div class="row">
+      <!-- Barra lateral para entradas -->
+      <div class="col-md-3 sidebar">
+        <div class="input-panel">
+          <h3>Location</h3>
+          <div class="mb-3">
+            <input type="text" class="form-control" id="locationInput" placeholder="Enter location name">
+            <small class="text-muted">Or click on the map to select a location</small>
+          </div>
+
+          <h3>Date</h3>
+          <div class="mb-3">
+            <div id="calendarContainer">
+              <table class="table-condensed table-bordered table-striped calendar-table">
+                <thead>
+                  <tr>
+                    <th colspan="7">
+                      <span class="btn-group">
+                        <a class="btn" id="prevMonth"><i class="icon-chevron-left"></i></a>
+                        <a class="btn active" id="currentMonthYear">February 2024</a>
+                        <a class="btn" id="nextMonth"><i class="icon-chevron-right"></i></a>
+                      </span>
+                      <div id="yearSelector" class="year-selector"></div>
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>Su</th>
+                    <th>Mo</th>
+                    <th>Tu</th>
+                    <th>We</th>
+                    <th>Th</th>
+                    <th>Fr</th>
+                    <th>Sa</th>
+                  </tr>
+                </thead>
+                <tbody id="calendarBody">
+                  <!-- Os dias do calendário serão gerados por JavaScript -->
+                </tbody>
+              </table>
+            </div>
+            <div class="mt-2">
+              <small class="text-muted">Selected date: <span id="selectedDate">None</span></small>
+            </div>
+          </div>
+
+          <h3>Weather Variables</h3>
+          <div class="mb-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="temperature" id="temperatureCheck" checked>
+              <label class="form-check-label" for="temperatureCheck">
+                Temperature
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="precipitation" id="precipitationCheck">
+              <label class="form-check-label" for="precipitationCheck">
+                Precipitation
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="windSpeed" id="windSpeedCheck">
+              <label class="form-check-label" for="windSpeedCheck">
+                Wind Speed
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="humidity" id="humidityCheck">
+              <label class="form-check-label" for="humidityCheck">
+                Humidity
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="airQuality" id="airQualityCheck">
+              <label class="form-check-label" for="airQualityCheck">
+                Air Quality
+              </label>
+            </div>
+          </div>
+
+          <button id="analyzeBtn" class="btn btn-primary w-100">Analyze Weather</button>
+          <div class="d-grid gap-2 mt-2">
+            <button id="downloadJsonBtn" class="btn btn-outline-secondary">Download JSON</button>
+            <button id="downloadCsvBtn" class="btn btn-outline-secondary">Download CSV</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Área de conteúdo principal -->
+      <div class="col-md-9 main-content">
+        <!-- Container do mapa -->
+        <div id="mapContainer" class="map-container" style="height: 400px; width: 100%;"></div>
+
+        <!-- Dashboard de resultados -->
+        <div class="results-container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="summary-card">
+                <h3>Weather Analysis</h3>
+                <p id="weatherSummary">Select a location and date to see weather analysis.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row charts-row">
+            <div class="col-md-6">
+              <div class="chart-container">
+                <canvas id="temperatureChart"></canvas>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="chart-container">
+                <canvas id="precipitationChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="row charts-row">
+            <div class="col-md-6">
+              <div class="chart-container">
+                <canvas id="windChart"></canvas>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="chart-container">
+                <canvas id="humidityChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6 text-end">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="js/dark-mode-fix.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/dashboard.js"></script>
+
+  <script>
+    // Animação de clique
+    document.addEventListener("click", function (e) {
+      const effect = document.createElement("div");
+      effect.classList.add("energy-effect");
+      effect.style.position = "fixed";
+      effect.style.left = `${e.clientX - 25}px`;
+      effect.style.top = `${e.clientY - 25}px`;
+      document.body.appendChild(effect);
+      setTimeout(() => {
+        effect.remove();
+      }, 1000);
+    });
+  </script>
+</body>
+
+</html>
