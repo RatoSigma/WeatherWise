@@ -688,5 +688,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.classList.add('dark-theme');
         }
     }
-})();/ /   Ú l t i m a   a t u a l i z a ç ã o :   1 0 / 0 5 / 2 0 2 5   2 1 : 1 6 : 2 0  
+})();/ /   ï¿½ l t i m a   a t u a l i z a ï¿½ ï¿½ o :   1 0 / 0 5 / 2 0 2 5   2 1 : 1 6 : 2 0 
+ 
  

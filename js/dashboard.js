@@ -88,14 +88,14 @@ function setupEventListeners() {
         }
     });
     
-    // Listeners de eventos para navegação do calendário
-    prevMonthBtn.addEventListener('click', function() {
-        navigateMonth(-1);
-    });
-    
-    nextMonthBtn.addEventListener('click', function() {
-        navigateMonth(1);
-    });
+    // Listeners de eventos para navegação do calendário - REMOVIDOS (serão adicionados em initCalendar)
+    // prevMonthBtn.addEventListener('click', function() {
+    //     navigateMonth(-1);
+    // });
+    // 
+    // nextMonthBtn.addEventListener('click', function() {
+    //     navigateMonth(1);
+    // });
     
     // Botão de análise
     document.getElementById('analyzeBtn').addEventListener('click', function() {
@@ -437,10 +437,12 @@ function initCalendar() {
     
     // Configurar navegação do mês
     document.getElementById('prevMonth').addEventListener('click', function() {
+        console.log('Botão prevMonth clicado');
         navigateMonth(-1);
     });
     
     document.getElementById('nextMonth').addEventListener('click', function() {
+        console.log('Botão nextMonth clicado');
         navigateMonth(1);
     });
     
@@ -590,6 +592,8 @@ function updateCalendarDisplay() {
 
 // Navegar para o mês anterior ou seguinte
 function navigateMonth(direction) {
+    console.log('Navegando mês: direction=' + direction + ', currentMonth antes=' + currentMonth + ', currentYear antes=' + currentYear);
+    
     currentMonth += direction;
     
     // Manipular mudança de ano
@@ -603,6 +607,8 @@ function navigateMonth(direction) {
     
     // Garantir que o mês esteja dentro dos limites válidos (0-11)
     currentMonth = ((currentMonth % 12) + 12) % 12;
+    
+    console.log('Navegando mês: currentMonth depois=' + currentMonth + ', currentYear depois=' + currentYear);
     
     updateCalendarDisplay();
 }

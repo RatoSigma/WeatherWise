@@ -114,13 +114,12 @@ document.addEventListener('DOMContentLoaded', function() {
           `).join('')}
         </div>
         <button class="btn btn-primary quiz-btn ${index === quizData.length - 1 ? 'finish-btn' : 'next-btn'}">
-          ${index === quizData.length - 1 ? 'Finalizar Quiz' : 'Próxima Pergunta'}
+          ${index === quizData.length - 1 ? 'Finish Quiz' : 'Next Question'}
         </button>
       `;
       
       questionsContainer.appendChild(questionDiv);
     });
-    
     // Add event listeners to buttons
     document.querySelectorAll('.next-btn').forEach((btn, index) => {
       btn.addEventListener('click', () => nextQuestion(index));
@@ -176,15 +175,14 @@ document.addEventListener('DOMContentLoaded', function() {
     scoreDisplay.textContent = score;
     
     if (score <= 3) {
-      scoreMessage.textContent = 'Você pode melhorar! Tente novamente para aprender mais sobre meteorologia.';
+      scoreMessage.textContent = 'You can improve! Try again to learn more about meteorology.';
     } else if (score <= 6) {
-      scoreMessage.textContent = 'Bom trabalho! Você tem um conhecimento básico sobre meteorologia.';
+      scoreMessage.textContent = 'Good job! You have a basic understanding of meteorology.';
     } else if (score <= 9) {
-      scoreMessage.textContent = 'Muito bom! Você tem um ótimo conhecimento sobre meteorologia.';
+      scoreMessage.textContent = 'Very good! You have great knowledge about meteorology.';
     } else {
-      scoreMessage.textContent = 'Excelente! Você é um especialista em meteorologia!';
+      scoreMessage.textContent = 'Excellent! You are a meteorology expert!';
     }
-    
     generateExplanations();
     resultsContainer.style.display = 'block';
     quizProgress.style.width = '100%';
@@ -206,14 +204,13 @@ document.addEventListener('DOMContentLoaded', function() {
         <h5>${index + 1}. ${data.question}</h5>
         <p>
           ${userAnswer === -1 ? 
-            `<strong>Você não respondeu.</strong> A resposta correta é: <strong>${data.options[correctAnswer]}</strong>` : 
-            `<strong>Sua resposta:</strong> ${data.options[userAnswer]}<br>
-             <strong>Resposta correta:</strong> ${data.options[correctAnswer]}`
+            `<strong>You did not answer.</strong> The correct answer is: <strong>${data.options[correctAnswer]}</strong>` : 
+            `<strong>Your answer:</strong> ${data.options[userAnswer]}<br>
+             <strong>Correct answer:</strong> ${data.options[correctAnswer]}`
           }
         </p>
         <div class="explanation">${data.explanation}</div>
       `;
-      
       explanationsContainer.appendChild(explanationDiv);
     });
   }
