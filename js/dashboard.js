@@ -601,6 +601,9 @@ function navigateMonth(direction) {
         currentYear++;
     }
     
+    // Garantir que o mês esteja dentro dos limites válidos (0-11)
+    currentMonth = ((currentMonth % 12) + 12) % 12;
+    
     updateCalendarDisplay();
 }
 
