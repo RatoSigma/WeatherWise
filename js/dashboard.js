@@ -199,7 +199,8 @@ function updateSuggestionsList(suggestions) {
         item.className = 'suggestion-item';
         item.textContent = suggestion.display_name;
         
-        item.addEventListener('click', () => {
+        // Add click event to select this location
+        item.addEventListener('click', function() {
             document.getElementById('locationInput').value = suggestion.display_name;
             const latlng = { 
                 lat: parseFloat(suggestion.lat), 
@@ -213,7 +214,8 @@ function updateSuggestionsList(suggestions) {
         suggestionsContainer.appendChild(item);
     });
     
-    suggestionsContainer.style.display = 'block';
+    // Show suggestions container
+     suggestionsContainer.style.display = 'block';
     
     // Ocultar sugestões ao clicar fora
     document.addEventListener('click', function(e) {
@@ -773,33 +775,33 @@ function generateThresholdLabels() {
     
     return {
         temperature: [
-            `Muito Frio (<${convertTemp(tempThresholds.veryCold)}${tempUnitSymbol})`,
-            `Frio (${convertTemp(tempThresholds.veryCold)}-${convertTemp(tempThresholds.cold)}${tempUnitSymbol})`,
-            `Ameno (${convertTemp(tempThresholds.cold)}-${convertTemp(tempThresholds.mild)}${tempUnitSymbol})`,
-            `Quente (${convertTemp(tempThresholds.mild)}-${convertTemp(tempThresholds.warm)}${tempUnitSymbol})`,
-            `Muito Quente (${convertTemp(tempThresholds.warm)}-${convertTemp(tempThresholds.hot)}${tempUnitSymbol})`,
-            `Extremamente Quente (>${convertTemp(tempThresholds.hot)}${tempUnitSymbol})`
+            `Very Cold (<${convertTemp(tempThresholds.veryCold)}${tempUnitSymbol})`,
+            `Cold (${convertTemp(tempThresholds.veryCold)}-${convertTemp(tempThresholds.cold)}${tempUnitSymbol})`,
+            `Mild (${convertTemp(tempThresholds.cold)}-${convertTemp(tempThresholds.mild)}${tempUnitSymbol})`,
+            `Warm (${convertTemp(tempThresholds.mild)}-${convertTemp(tempThresholds.warm)}${tempUnitSymbol})`,
+            `Hot (${convertTemp(tempThresholds.warm)}-${convertTemp(tempThresholds.hot)}${tempUnitSymbol})`,
+            `Very Hot (>${convertTemp(tempThresholds.hot)}${tempUnitSymbol})`
         ],
         precipitation: [
-            `Nenhuma (0${precipUnitSymbol})`,
-            `Leve (0-${convertPrecip(precipThresholds.light)}${precipUnitSymbol})`,
-            `Moderada (${convertPrecip(precipThresholds.light)}-${convertPrecip(precipThresholds.moderate)}${precipUnitSymbol})`,
-            `Pesada (${convertPrecip(precipThresholds.moderate)}-${convertPrecip(precipThresholds.heavy)}${precipUnitSymbol})`,
-            `Muito Pesada (>${convertPrecip(precipThresholds.veryHeavy)}${precipUnitSymbol})`
+            `None (0${precipUnitSymbol})`,
+            `Light (0-${convertPrecip(precipThresholds.light)}${precipUnitSymbol})`,
+            `Moderate (${convertPrecip(precipThresholds.light)}-${convertPrecip(precipThresholds.moderate)}${precipUnitSymbol})`,
+            `Heavy (${convertPrecip(precipThresholds.moderate)}-${convertPrecip(precipThresholds.heavy)}${precipUnitSymbol})`,
+            `Very Heavy (>${convertPrecip(precipThresholds.veryHeavy)}${precipUnitSymbol})`
         ],
         wind: [
-            `Calmo (0-${convertWind(windThresholds.light)}${windUnitSymbol})`,
-            `Leve (${convertWind(windThresholds.light)}-${convertWind(windThresholds.moderate)}${windUnitSymbol})`,
-            `Moderado (${convertWind(windThresholds.moderate)}-${convertWind(windThresholds.strong)}${windUnitSymbol})`,
-            `Forte (${convertWind(windThresholds.strong)}-${convertWind(windThresholds.veryStrong)}${windUnitSymbol})`,
-            `Muito Forte (>${convertWind(windThresholds.veryStrong)}${windUnitSymbol})`
+            `Calm (0-${convertWind(windThresholds.light)}${windUnitSymbol})`,
+            `Light (${convertWind(windThresholds.light)}-${convertWind(windThresholds.moderate)}${windUnitSymbol})`,
+            `Moderate (${convertWind(windThresholds.moderate)}-${convertWind(windThresholds.strong)}${windUnitSymbol})`,
+            `Strong (${convertWind(windThresholds.strong)}-${convertWind(windThresholds.veryStrong)}${windUnitSymbol})`,
+            `Very Strong (>${convertWind(windThresholds.veryStrong)}${windUnitSymbol})`
         ],
         humidity: [
-            'Muito Seco (<30%)',
-            'Seco (30-60%)',
-            'Confortável (60-80%)',
-            'Húmido (80-90%)',
-            'Muito Húmido (>90%)'
+            'Very Dry (<30%)',
+            'Dry (30-60%)',
+            'Comfortable (60-80%)',
+            'Humid (80-90%)',
+            'Very Humid (>90%)'
         ]
     };
 }
@@ -859,46 +861,46 @@ function updateCharts(data) {
 
 // Atualizar texto de resumo
 function updateSummary(data) {
-    const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const month = selectedDate ? months[selectedDate.getMonth()] : '';
     const location = document.getElementById('locationInput').value;
     
-    // Gerar etiquetas de limiar
+    // Generate threshold labels
     const labels = generateThresholdLabels();
     
-    // Encontrar condições com maior probabilidade
+    // Find conditions with highest probability
     const maxTempIndex = data.temperature.indexOf(Math.max(...data.temperature));
     const maxPrecipIndex = data.precipitation.indexOf(Math.max(...data.precipitation));
     const maxWindIndex = data.wind.indexOf(Math.max(...data.wind));
     const maxHumidityIndex = data.humidity.indexOf(Math.max(...data.humidity));
     
-    // Extrair nomes de condições das etiquetas (remover os intervalos entre parênteses)
+    // Extract condition names from labels (remove ranges in parentheses)
     const tempConditions = labels.temperature.map(label => label.replace(/\s*\([^)]*\)/g, '').toLowerCase());
     const precipConditions = labels.precipitation.map(label => label.replace(/\s*\([^)]*\)/g, '').toLowerCase());
     const windConditions = labels.wind.map(label => label.replace(/\s*\([^)]*\)/g, '').toLowerCase());
     const humidityConditions = labels.humidity.map(label => label.replace(/\s*\([^)]*\)/g, '').toLowerCase());
     
-    // Criar texto de resumo
-    let summary = `Para ${month} em ${location}, há uma probabilidade de ${data.temperature[maxTempIndex]}% de tempo ${tempConditions[maxTempIndex]}`;
+    // Create summary text
+    let summary = `For ${month} in ${location}, there is a ${data.temperature[maxTempIndex]}% probability of ${tempConditions[maxTempIndex]} weather`;
     
-    // Adicionar precipitação se marcado
+    // Add precipitation if checked
     if (document.getElementById('precipitationCheck').checked) {
-        summary += `, uma probabilidade de ${data.precipitation[maxPrecipIndex]}% de ${precipConditions[maxPrecipIndex]}`;
+        summary += `, a ${data.precipitation[maxPrecipIndex]}% probability of ${precipConditions[maxPrecipIndex]}`;
     }
     
-    // Adicionar vento se marcado
+    // Add wind if checked
     if (document.getElementById('windSpeedCheck').checked) {
-        summary += `, e uma probabilidade de ${data.wind[maxWindIndex]}% de ${windConditions[maxWindIndex]}`;
+        summary += `, and a ${data.wind[maxWindIndex]}% probability of ${windConditions[maxWindIndex]}`;
     }
     
-    // Adicionar humidade se marcado
+    // Add humidity if checked
     if (document.getElementById('humidityCheck').checked) {
-        summary += `. A humidade provavelmente será ${humidityConditions[maxHumidityIndex]} (${data.humidity[maxHumidityIndex]}%)`;
+        summary += `. Humidity is likely to be ${humidityConditions[maxHumidityIndex]} (${data.humidity[maxHumidityIndex]}%)`;
     }
     
     summary += '.';
     
-    // Atualizar texto de resumo
+    // Update summary text
     document.getElementById('weatherSummary').textContent = summary;
 }
 
@@ -1025,42 +1027,42 @@ function downloadCSV() {
         precipitationUnit: 'mm'
     };
     
-    // Criar dados CSV
-    let csvContent = 'Parâmetro Meteorológico,Condição,Probabilidade (%),Unidade\n';
+    // Create CSV data
+    let csvContent = 'Weather Parameter,Condition,Probability (%),Unit\n';
     
-    // Dados de temperatura
-    const tempConditions = ['Muito Frio', 'Frio', 'Ameno', 'Quente', 'Muito Quente', 'Extremamente Quente'];
+    // Temperature data
+    const tempConditions = ['Very Cold', 'Cold', 'Mild', 'Warm', 'Hot', 'Very Hot'];
     const tempData = charts.temperature.data.datasets[0].data;
     tempConditions.forEach((condition, index) => {
-        csvContent += `Temperatura,${condition},${tempData[index] || 0},${settings.temperatureUnit}\n`;
+        csvContent += `Temperature,${condition},${tempData[index] || 0},${settings.temperatureUnit}\n`;
     });
     
-    // Dados de precipitação
-    const precipConditions = ['Nenhuma', 'Leve', 'Moderada', 'Intensa', 'Muito Intensa'];
+    // Precipitation data
+    const precipConditions = ['None', 'Light', 'Moderate', 'Heavy', 'Very Heavy'];
     const precipData = charts.precipitation.data.datasets[0].data;
     precipConditions.forEach((condition, index) => {
-        csvContent += `Precipitação,${condition},${precipData[index] || 0},${settings.precipitationUnit}\n`;
+        csvContent += `Precipitation,${condition},${precipData[index] || 0},${settings.precipitationUnit}\n`;
     });
     
-    // Dados de vento
-    const windConditions = ['Calmo', 'Leve', 'Moderado', 'Forte', 'Muito Forte'];
+    // Wind data
+    const windConditions = ['Calm', 'Light', 'Moderate', 'Strong', 'Very Strong'];
     const windData = charts.wind.data.datasets[0].data;
     windConditions.forEach((condition, index) => {
-        csvContent += `Velocidade do Vento,${condition},${windData[index] || 0},${settings.windSpeedUnit}\n`;
+        csvContent += `Wind Speed,${condition},${windData[index] || 0},${settings.windSpeedUnit}\n`;
     });
     
-    // Dados de humidade
-    const humidityConditions = ['Muito Seca', 'Seca', 'Confortável', 'Húmida', 'Muito Húmida'];
+    // Humidity data
+    const humidityConditions = ['Very Dry', 'Dry', 'Comfortable', 'Humid', 'Very Humid'];
     const humidityData = charts.humidity.data.datasets[0].data;
     humidityConditions.forEach((condition, index) => {
-        csvContent += `Humidade,${condition},${humidityData[index] || 0},%\n`;
+        csvContent += `Humidity,${condition},${humidityData[index] || 0},%\n`;
     });
     
-    // Criar nome de ficheiro
+    // Create filename
     const safeLocation = location.replace(/[^a-z0-9]/gi, '_').toLowerCase();
     const filename = `weatherwise_${safeLocation}_${month.toLowerCase()}.csv`;
     
-    // Descarregar CSV
+    // Download CSV
     const csvBlob = new Blob([csvContent], { type: 'text/csv' });
     const csvUrl = URL.createObjectURL(csvBlob);
     const csvLink = document.createElement('a');

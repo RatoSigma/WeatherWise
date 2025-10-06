@@ -1,0 +1,138 @@
+/* Navbar/Header Styles - Copiados de settings.css para consistência */
+.navbar {
+  background-color: #000f1ddc !important;
+}
+
+.navbar .nav-link {
+  color: #fff;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+.navbar .nav-link:hover, 
+.navbar .nav-link.active {
+  color: #47b6f6;
+}
+
+/* Tema escuro para navbar */
+body.dark-theme .navbar {
+  background-color: #000f1ddc !important;
+}
+body.dark-theme .navbar * {
+  color: #fff !important;
+}
+
+/* 
+ * Info page styles for WeatherWise 2.0
+ * Contém estilos específicos para a página de informações meteorológicas
+ */
+
+.info-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.info-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #0d6efd;
+  transition: transform 0.3s ease;
+}
+
+.info-card:hover .info-icon {
+  transform: scale(1.2);
+}
+
+/* Rain animation container */
+.rain-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+.raindrop {
+  position: absolute;
+  width: 2px;
+  height: 15px;
+  background: linear-gradient(to bottom, rgba(0, 0, 255, 0), rgba(0, 0, 255, 0.5));
+  border-radius: 0 0 5px 5px;
+  animation: falling linear infinite;
+}
+
+@keyframes falling {
+  0% {
+    transform: translateY(-100vh);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+/* Quiz section */
+.quiz-section {
+  text-align: center;
+  padding: 50px 0;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  margin-top: 30px;
+  transition: background-color 0.3s ease;
+}
+
+.quiz-btn {
+  padding: 10px 30px;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quiz-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark theme overrides */
+body.dark-theme .info-card:hover {
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme .info-icon {
+  color: #4dabf7;
+}
+
+body.dark-theme .raindrop {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
+}
+
+body.dark-theme .quiz-section {
+  background-color: #2a2a2a;
+}
+
+body.dark-theme .quiz-btn:hover {
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .info-card {
+    margin-bottom: 15px;
+  }
+  
+  .info-icon {
+    font-size: 2rem;
+  }
+  
+  .quiz-section {
+    padding: 30px 0;
+  }
+}

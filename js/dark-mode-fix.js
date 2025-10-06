@@ -25,6 +25,11 @@
         if (!body) return;
         
         body.classList.remove('dark-theme');
+        
+        // Forçar navegador a reconhecer a mudança
+        body.style.display = 'none';
+        body.offsetHeight; // Forçar reflow
+        body.style.display = '';
     }
     
     // Verificar tema guardado e aplicá-lo
@@ -44,9 +49,60 @@
     
     // Aplicar tema o mais rápido possível
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initializeTheme);
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeTheme();
+            setupThemeToggleListener();
+        });
     } else {
         initializeTheme();
+        setupThemeToggleListener();
+    }
+    
+    // Setup theme toggle listener
+    function setupThemeToggleListener() {
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            // Set initial state based on current theme
+            const savedSettings = localStorage.getItem('weatherwise_settings');
+            if (savedSettings) {
+                const settings = JSON.parse(savedSettings);
+                themeToggle.checked = settings.theme === 'dark';
+                updateThemeLabel(themeToggle.checked);
+            }
+            
+            // Add change event listener
+            themeToggle.addEventListener('change', function() {
+                if (this.checked) {
+                    applyDarkMode();
+                    updateThemeLabel(true);
+                    saveThemeSetting('dark');
+                } else {
+                    removeDarkMode();
+                    updateThemeLabel(false);
+                    saveThemeSetting('light');
+                }
+            });
+        }
+    }
+    
+    // Update theme label text
+    function updateThemeLabel(isDark) {
+        const themeLabel = document.getElementById('themeLabel');
+        if (themeLabel) {
+            themeLabel.textContent = isDark ? 'Dark Mode' : 'Light Mode';
+        }
+    }
+    
+    // Save theme setting to localStorage
+    function saveThemeSetting(theme) {
+        try {
+            const savedSettings = localStorage.getItem('weatherwise_settings');
+            let settings = savedSettings ? JSON.parse(savedSettings) : {};
+            settings.theme = theme;
+            localStorage.setItem('weatherwise_settings', JSON.stringify(settings));
+        } catch (error) {
+            console.error('Error saving theme setting:', error);
+        }
     }
     
     // Ouvir por mudanças de tema
